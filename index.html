@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>苹果官方资讯</title>
+</head>
+<body>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+var arr1 = location.href.split('?')[1].split('&')
+function getJson(arr){
+    var theRequest = new Object();
+    for (var i = 0; i < arr.length; i++) {
+        var kye = arr[i].split("=")[0]
+        var value = arr[i].split("=")[1]
+        // 给对象赋值
+        theRequest[kye] = value
+    }
+    return theRequest;
+}
+var arr = getJson(arr1);
+// console.log(arr);
+
+ // var str = location.search;
+ // document.write(arrs);
+ // alert(str) ;return;
+    var query =arr.index;
+    var e =arr.e;
+    var open = "https://open.weixin.qq.com/connect/oauth2/authorize?";
+    var open_end = '&response_type=code&scope=snsapi_base#wechat_redirect';
+    window.onload = function () {
+        var url = 'http://testpage.huashengzhuan.com.cn/home/entrance_api.php';
+        $.ajax({
+            type: "GET",
+            url: url,
+            dataType: "jsonp",
+            // jsonp: "callback",
+            // jsonpCallback: 'callback',
+            success: function (res) {
+                 console.log(res);
+                var redirect_uri = res.domain +'/'+query + '?e=' + e+ '&appid=' +res.app_id;
+                redirect_uri = escape(redirect_uri);
+                // console.log(open +'appid='+res.app_id+'&redirect_uri='+redirect_uri+open_end);
+                location.href = open +'appid='+res.app_id+'&redirect_uri='+redirect_uri+open_end;
+            },
+            error: function (res) {
+                 console.log(res)
+                //alert(url);
+                // location.href = 'http://qq.com';
+            }
+        });
+    }
+</script>
+</body>
+
+</html>
+
+<!-- http://qyz201910171622.applinzi.com/?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae -->
+
+<!-- http://bendicesi.test/cesi.html?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae -->
+<!-- ?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae -->
+
+<!-- index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718,e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae
+
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb8a9ffe5ae270c6c&redirect_uri=http%3A//kd816.cn/b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718%3Fe%3Db0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae%26appid%3Dwxb8a9ffe5ae270c6c&response_type=code&scope=snsapi_base&connect_redirect=1#wechat_redirect -->
+
+
+<!-- http://zhuan-1259453309.cos.ap-chengdu.myqcloud.com?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae -->
+<!-- http://q0mo0qj43.bkt.clouddn.com/cesi.html?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae
+
+http://xu996839.gz01.bdysite.com?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae
+
+http://hb2.oss.pppcloud.cn/swwq3/33.png?Signature=33lknaxzGjkgBStDKns9dOH%2FiLY%3D&Expires=1573285320&AWSAccessKeyId=FC04T09VJ3JLFATGG0Z8&x-amz-meta-expiresin=60&x-amz-meta-keyacl=public-read -->
+
+<!-- http://q0mo0qj43.bkt.clouddn.com/?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae -->
+
+<!-- http://q0okfcw41.bkt.clouddn.com/index.html?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae -->
+
+<!-- http://xu996839.gz01.bdysite.com/
+
+http://weixins.chinanorth.cloudapp.chinacloudapi.cn
+?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae
+
+http://q0okfcw41.bkt.clouddn.com?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae
+
+http://yumizhuan.gitee.io/yuminzhuan?index=b1503bd6cd8091f92e9ab4d24f352f9ce4bbbda6794f405b6cd22d7d8c91a31576733faac76cfa0f693e61625ab2f9cea297a3dc11543b92487a23044ecdc7e553c37f3b7196fa9333ce4bf35b98328675cc96987821315ac149dc37fdd6df8e5701aeacc99ab802061fefd22df7f8431a62a55e58de5bd362697fd7a91f2eefb496dd2082cfdff4c2bd9690b9f3d421fdcb9dd0f1934687f587688c4ea393fdf5ec34c315d718&e=b0956158acf1847e4be1453e0a9ff44bb70e8a98884ff0f63de647df88f0ffd343d8133add93e02b34718ab8fe228739abf171763581a080928123458b41cbc0b9efae0abcc6adae -->
