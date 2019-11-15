@@ -36,8 +36,8 @@ var arr = getJson(arr1);
             type: "GET",
             url: url,
             dataType: "jsonp",
-            // jsonp: "callback",
-            // jsonpCallback: 'callback',
+            jsonp: "callback",
+           jsonpCallback: 'callback',
             success: function (res) {
                  console.log(res);
                 var redirect_uri = res.domain +'/'+query + '?e=' + e+ '&appid=' +res.app_id;
