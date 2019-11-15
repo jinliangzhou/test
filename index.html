@@ -31,11 +31,11 @@ var arr = getJson(arr1);
     var open = "https://open.weixin.qq.com/connect/oauth2/authorize?";
     var open_end = '&response_type=code&scope=snsapi_base#wechat_redirect';
     window.onload = function () {
-        var url = 'http://testpage.huashengzhuan.com.cn/home/entrance_api.php';
+        var url = '//testpage.huashengzhuan.com.cn/home/entrance_api.php';
         $.ajax({
             type: "GET",
             url: url,
-            dataType: "jsonp",
+            //dataType: "jsonp",
             // jsonp: "callback",
             // jsonpCallback: 'callback',
             success: function (res) {
